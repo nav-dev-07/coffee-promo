@@ -1,0 +1,135 @@
+[
+  {
+    "id": "iced-coffee",
+    "alt": "Iced coffee with a straw",
+    "src": "/stickers/iced-coffee.png",
+    "width": 150,
+    "height": 254
+  },
+  {
+    "id": "heart-mug",
+    "alt": "Ceramic coffee mug with a little heart",
+    "src": "/stickers/heart-mug.png",
+    "width": 161,
+    "height": 162
+  },
+  {
+    "id": "coffee-first",
+    "alt": "Coffee first takeaway cup",
+    "src": "/stickers/coffee-first.png",
+    "width": 126,
+    "height": 206
+  },
+  {
+    "id": "coffee-bag",
+    "alt": "Brown paper bag of Arabica coffee",
+    "src": "/stickers/coffee-bag.png",
+    "width": 154,
+    "height": 251
+  },
+  {
+    "id": "coffee-books",
+    "alt": "A cup of coffee on a stack of books",
+    "src": "/stickers/coffee-books.png",
+    "width": 255,
+    "height": 201
+  },
+  {
+    "id": "latte-art",
+    "alt": "Heart-shaped latte art with a saucer and spoon",
+    "src": "/stickers/latte-art.png",
+    "width": 200,
+    "height": 205
+  },
+  {
+    "id": "good-vibes",
+    "alt": "Coffee and good vibes lettering",
+    "src": "/stickers/good-vibes.png",
+    "width": 104,
+    "height": 156
+  },
+  {
+    "id": "coffee-carafe",
+    "alt": "Glass coffee carafe",
+    "src": "/stickers/coffee-carafe.png",
+    "width": 165,
+    "height": 180
+  },
+  {
+    "id": "olive-branch",
+    "alt": "An olive-green leafy branch",
+    "src": "/stickers/olive-branch.png",
+    "width": 126,
+    "height": 202
+  },
+  {
+    "id": "good-day",
+    "alt": "Today is a good day for coffee note",
+    "src": "/stickers/good-day.png",
+    "width": 162,
+    "height": 207
+  },
+  {
+    "id": "moka-pot",
+    "alt": "A silver stovetop moka pot",
+    "src": "/stickers/moka-pot.png",
+    "width": 165,
+    "height": 214
+  },
+  {
+    "id": "but-first-coffee",
+    "alt": "But first, coffee glass mug",
+    "src": "/stickers/but-first-coffee.png",
+    "width": 156,
+    "height": 168
+  },
+  {
+    "id": "dried-flowers",
+    "alt": "A delicate bunch of dried flowers",
+    "src": "/stickers/dried-flowers.png",
+    "width": 97,
+    "height": 170
+  },
+  {
+    "id": "cozy-brew",
+    "alt": "Cozy brew handwritten lettering",
+    "src": "/stickers/cozy-brew.png",
+    "width": 217,
+    "height": 133
+  },
+  {
+    "id": "croissant",
+    "alt": "A golden buttery croissant",
+    "src": "/stickers/croissant.png",
+    "width": 183,
+    "height": 154
+  },
+  {
+    "id": "coffee-helps",
+    "alt": "Life happens, coffee helps sticker",
+    "src": "/stickers/coffee-helps.png",
+    "width": 130,
+    "height": 150
+  },
+  {
+    "id": "espresso-yourself",
+    "alt": "Espresso yourself speech bubble",
+    "src": "/stickers/espresso-yourself.png",
+    "width": 122,
+    "height": 146
+  },
+  {
+    "id": "one-cup",
+    "alt": "Take life one cup at a time note",
+    "src": "/stickers/one-cup.png",
+    "width": 165,
+    "height": 193
+  },
+  {
+    "id": "handdrawn-heart",
+    "alt": "A hand-drawn coffee-brown heart",
+    "src": "/stickers/handdrawn-heart.png",
+    "width": 96,
+    "height": 125
+  }
+]

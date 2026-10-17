@@ -1,69 +1,140 @@
 import Image from "next/image";
+import coffeeCupPhoto from "../public/coffee-latte-full-cup.webp";
+import { Arrow, BeanMark, Wordmark } from "./components/brand";
+import BrewGuide from "./components/brew-guide";
+import CoffeeStory from "./components/coffee-story";
+import StickerCollection, { CoffeeSticker } from "./components/sticker-collection";
+import stickers from "../public/stickers/manifest.json";
+
+const manifestoSticker = stickers.find(sticker => sticker.id === "coffee-first");
+
+const coffees = [
+  {
+    number: "01",
+    name: "Daybreak",
+    mood: "FOR THE EARLY LITTLE MOMENTS",
+    notes: "Milk chocolate · Caramel · Orange",
+    origin: "Brazil & Colombia",
+    roast: "Medium roast",
+    color: "terracotta",
+    label: "Your everyday, elevated.",
+  },
+  {
+    number: "02",
+    name: "Sunday Kind",
+    mood: "FOR TAKING THE LONG WAY HOME",
+    notes: "Stone fruit · Honey · Bergamot",
+    origin: "Ethiopia",
+    roast: "Light roast",
+    color: "olive",
+    label: "A brighter state of mind.",
+  },
+  {
+    number: "03",
+    name: "After Hours",
+    mood: "FOR ONE MORE CHAPTER",
+    notes: "Dark chocolate · Hazelnut · Brown sugar",
+    origin: "Colombia",
+    roast: "Decaf, full of character",
+    color: "cocoa",
+    label: "All the feeling. Less caffeine.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <header className="site-header">
+        <a href="#" className="brand-link" aria-label="Slow coffee home">
+          <Wordmark />
+          <span className="brand-descriptor">COFFEE &<br />LITTLE MOMENTS</span>
+        </a>
+        <a className="header-cta" href="#coffee">Find your coffee <Arrow diagonal /></a>
+      </header>
+
+      <main id="main-content">
+        <CoffeeStory />
+
+        <section className="manifesto section-padding" id="our-way" aria-labelledby="manifesto-heading">
+          <div className="eyebrow"><span className="little-star">✳</span> LESS HURRY. MORE HAPPY.</div>
+          <h2 id="manifesto-heading">The world moves fast.<br />Your coffee <em>doesn’t have to.</em></h2>
+          <div className="manifesto-sticker-group">
+            {manifestoSticker && (
+              <CoffeeSticker
+                sticker={manifestoSticker}
+                className="manifesto-sticker"
+                maxWidth={150}
+                maxHeight={230}
+                inset={16}
+                dragBounds="document"
+              />
+            )}
+            <span className="handwritten">Stay a little longer. <span aria-hidden="true">↴</span></span>
+          </div>
+          <div className="manifesto-bottom">
+            <p>We believe the best part of your day might just be the part where you pause. So we make coffee worth pausing for.</p>
+          </div>
+        </section>
+
+        <section className="coffee-section section-padding" id="coffee" aria-labelledby="coffee-heading">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">GOOD COFFEE. YOUR WAY.</p>
+              <h2 id="coffee-heading">Meet your <em>daily ritual.</em></h2>
+            </div>
+            <p className="section-intro">Different personalities. The same lovely intention.<br />Find the one that feels like you.</p>
+          </div>
+          <div className="coffee-grid">
+            {coffees.map((coffee) => (
+              <article className={`coffee-card ${coffee.color}`} key={coffee.number}>
+                <div className="coffee-card-art">
+                  <span className="card-edition">THE EVERYDAY COLLECTION</span>
+                  <span className="card-number">Nº {coffee.number}</span>
+                  <div className="coffee-bag" aria-hidden="true">
+                    <div className="bag-seam" />
+                    <div className="bag-label">
+                      <span className="bag-brand">slow.</span>
+                      <BeanMark className="bag-bean" />
+                      <span className="bag-coffee-name">{coffee.name}</span>
+                      <span className="bag-origin">{coffee.origin}</span>
+                      <span className="bag-footer">A LITTLE RITUAL. A BETTER DAY.<br />250g — WHOLE BEAN</span>
+                    </div>
+                  </div>
+                  <span className="card-art-caption">{coffee.label}</span>
+                </div>
+                <div className="coffee-card-details">
+                  <p className="eyebrow">{coffee.mood}</p>
+                  <div className="coffee-name-row"><h3>{coffee.name}</h3><a href="#brew-guide" aria-label={`Explore brewing methods for ${coffee.name}`}><Arrow diagonal /></a></div>
+                  <p className="tasting-notes">{coffee.notes}</p>
+                  <div className="coffee-meta"><span>{coffee.origin}</span><span>{coffee.roast}</span></div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="moment-section" aria-labelledby="moment-heading">
+          <div className="moment-image">
+            <Image src={coffeeCupPhoto} alt="A complete white ceramic cup of coffee with leaf-shaped latte art, its handle and saucer visible on a warm wooden table" fill sizes="(max-width: 760px) 100vw, 50vw" quality={90} />
+          </div>
+          <div className="moment-copy">
+            <BeanMark className="moment-bean" />
+            <p className="eyebrow">IT’S NEVER JUST COFFEE.</p>
+            <h2 id="moment-heading">It’s the first sip.<br />The deep breath.<br />The <em>here and now.</em></h2>
+            <p>Before the inbox. Between the big things. Over a conversation that runs a little long. There’s a little good in slowing down.</p>
+            <a className="text-link light-link" href="#brew-guide">Make a moment of it <Arrow diagonal /></a>
+          </div>
+        </section>
+
+        <BrewGuide />
+        <StickerCollection />
       </main>
-    </div>
+
+      <footer className="site-footer section-padding">
+        <div className="footer-top"><p>Good days.<br /><em>One cup at a time.</em></p><a className="back-to-top" href="#ritual" aria-label="Back to the top"><Arrow /></a></div>
+        <div className="footer-bottom"><a href="#" aria-label="Slow coffee home"><Wordmark /></a><span>A LITTLE RITUAL. A BETTER DAY.</span><span>© 2026 SLOW COFFEE</span></div>
+      </footer>
+    </>
   );
 }
