@@ -1,0 +1,110 @@
+/* Roasted Original: a layered, animated interpretation of the approved sheet. */
+.coffee-cursor {
+  --coffee-ink: #352319;
+  --coffee-paper: #fff9ef;
+  --coffee-accent: #b95438;
+  --coffee-look-x: 0px;
+  --coffee-look-y: 0px;
+  --coffee-lean: 0deg;
+  --coffee-offset-x: 0px;
+  --coffee-offset-y: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  width: 64px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  visibility: hidden;
+  contain: layout style;
+  will-change: transform;
+  filter: drop-shadow(0 1px 1px #27170e24);
+}
+
+.coffee-cursor[data-visible="true"] { visibility: visible; }
+.coffee-cursor[data-state="none"] { visibility: hidden; }
+.coffee-cursor, .coffee-cursor * { pointer-events: none !important; }
+.coffee-cursor-art { display: block; width: 100%; height: 100%; overflow: visible; color: var(--coffee-ink); }
+.coffee-cursor-art :is(path, ellipse, circle, rect) { stroke: var(--coffee-ink); stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.coffee-cursor-art .coffee-cursor-sticker-edge { fill: var(--coffee-paper); stroke: var(--coffee-paper); stroke-width: 4; }
+.coffee-cursor-art .coffee-cursor-bean { stroke-width: 3.2; }
+.coffee-cursor-art .coffee-cursor-highlight { stroke: #f3c18d; stroke-width: 3.1; opacity: 0.7; }
+.coffee-cursor-art .coffee-cursor-seam { stroke-width: 1.1; }
+.coffee-cursor-art .coffee-cursor-seam-light { stroke: #e2a46b; stroke-width: 1.2; opacity: 0.75; }
+.coffee-cursor-art .coffee-cursor-pin { fill: var(--coffee-ink); stroke: var(--coffee-paper); stroke-width: 2; }
+.coffee-cursor-art .coffee-cursor-eye { fill: var(--coffee-ink); stroke: none; }
+.coffee-cursor-art .coffee-cursor-eye-shine { fill: #ffdfac; stroke: none; }
+.coffee-cursor-art .coffee-cursor-cheek { fill: #b86643; stroke: none; opacity: 0.42; }
+.coffee-cursor-art .coffee-cursor-paper { fill: var(--coffee-paper); }
+.coffee-cursor-art .coffee-cursor-accent { stroke: var(--coffee-accent); }
+.coffee-cursor-art .coffee-cursor-accent-fill { fill: var(--coffee-accent); stroke: none; }
+.coffee-cursor-art .coffee-cursor-solid { fill: var(--coffee-accent); stroke-width: 2; }
+.coffee-cursor-art .coffee-cursor-cell { stroke: #b78c6a; stroke-dasharray: 4 4; stroke-width: 2; }
+.coffee-cursor-character { transform: translate(var(--coffee-offset-x), var(--coffee-offset-y)); transition: transform 100ms ease-out; }
+.coffee-cursor-body-motion { transform-origin: 34px 44px; transform: rotate(var(--coffee-lean)); }
+.coffee-cursor-body-pose { transform-origin: 34px 44px; transition: transform 150ms cubic-bezier(.2,.9,.2,1.4); }
+.coffee-cursor-gaze { transform: translate(var(--coffee-look-x), var(--coffee-look-y)); }
+.coffee-cursor-blink { transform-box: fill-box; transform-origin: center; animation: coffee-eye-blink 5.4s infinite; }
+.coffee-cursor-badge-enter { animation: coffee-badge-enter 190ms cubic-bezier(.2,.9,.2,1.3) both; }
+.coffee-cursor-badge { transform-origin: 16px 16px; animation: coffee-badge-breathe 2.7s ease-in-out infinite; }
+.coffee-cursor-sleep-eyes, .coffee-cursor-happy-eyes, .coffee-cursor-worried-mouth { display: none; }
+.coffee-cursor[data-state="wait"] .coffee-cursor-open-eyes,
+.coffee-cursor[data-state="pressed"] .coffee-cursor-open-eyes { display: none; }
+.coffee-cursor[data-state="wait"] .coffee-cursor-sleep-eyes,
+.coffee-cursor[data-state="pressed"] .coffee-cursor-happy-eyes { display: block; }
+.coffee-cursor[data-state="not-allowed"] .coffee-cursor-smile,
+.coffee-cursor[data-state="no-drop"] .coffee-cursor-smile { display: none; }
+.coffee-cursor[data-state="not-allowed"] .coffee-cursor-worried-mouth,
+.coffee-cursor[data-state="no-drop"] .coffee-cursor-worried-mouth { display: block; }
+.coffee-cursor[data-state="pressed"] .coffee-cursor-body-pose { transform: translateY(5px) rotate(-6deg) scale(1.14, .78); }
+.coffee-cursor[data-state="pointer"] .coffee-cursor-body-pose { transform: translateY(-1px) rotate(-3deg); }
+.coffee-cursor[data-state="grabbing"] .coffee-cursor-body-pose { transform: rotate(5deg) scale(.95, 1.04); }
+.coffee-cursor[data-state="wait"] .coffee-cursor-body-pose { animation: coffee-sleep 2.6s ease-in-out infinite; }
+.coffee-cursor-spinner { transform-origin: 16px 16px; animation: coffee-spinner 1.05s linear infinite; }
+.coffee-cursor-spinner-slow { animation-duration: 1.8s; }
+.coffee-cursor-pointing { transform-origin: 16px 29px; animation: coffee-hand-wave 1.5s ease-in-out infinite; }
+.coffee-cursor-help { animation: coffee-help-bob 1.9s ease-in-out infinite; }
+.coffee-cursor-ticks { animation: coffee-ticks 1.5s ease-in-out infinite; }
+.coffee-cursor-click-rays { transform-origin: 16px 16px; animation: coffee-click-rays 500ms ease-out infinite; }
+.coffee-cursor-resize-arrow { animation: coffee-resize-nudge 1.1s ease-in-out infinite; }
+.coffee-cursor-ibeam { animation: coffee-ibeam-pulse 1.4s ease-in-out infinite; }
+.coffee-cursor-prohibition { transform-origin: 16px 16px; animation: coffee-prohibition 2.4s ease-in-out infinite; }
+.coffee-cursor-directions { transform-origin: 16px 16px; animation: coffee-directions 1.5s ease-in-out infinite; }
+.coffee-cursor-zoom { transform-origin: 13px 12px; animation: coffee-zoom 1.6s ease-in-out infinite; }
+.coffee-cursor-copy { animation: coffee-copy 1.8s ease-in-out infinite; }
+.coffee-cursor-alias { animation: coffee-resize-nudge 1.3s ease-in-out infinite; }
+
+/* JS activates the mask only once a mouse and a rendered cursor are present. */
+@media (any-hover: hover) and (any-pointer: fine) {
+  html[data-coffee-cursor-active="true"]:not([data-coffee-cursor-probe]),
+  html[data-coffee-cursor-active="true"]:not([data-coffee-cursor-probe]) *,
+  html[data-coffee-cursor-active="true"]:not([data-coffee-cursor-probe]) *::before,
+  html[data-coffee-cursor-active="true"]:not([data-coffee-cursor-probe]) *::after,
+  html[data-coffee-cursor-active="true"]:not([data-coffee-cursor-probe]) ::backdrop { cursor: none !important; }
+}
+
+@keyframes coffee-eye-blink { 0%, 43%, 47%, 100% { transform: scaleY(1); } 45% { transform: scaleY(.08); } }
+@keyframes coffee-badge-enter { from { opacity: 0; translate: -3px 2px; } to { opacity: 1; translate: 0 0; } }
+@keyframes coffee-badge-breathe { 0%, 100% { translate: 0 0; } 50% { translate: 0 -1px; } }
+@keyframes coffee-spinner { to { transform: rotate(360deg); } }
+@keyframes coffee-hand-wave { 0%, 65%, 100% { transform: rotate(0); } 20% { transform: rotate(-9deg); } 40% { transform: rotate(7deg); } }
+@keyframes coffee-help-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px) rotate(4deg); } }
+@keyframes coffee-ticks { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+@keyframes coffee-click-rays { from { transform: scale(.8); opacity: 1; } to { transform: scale(1.2); opacity: .3; } }
+@keyframes coffee-resize-nudge { 0%, 100% { transform: translateX(-1px); } 50% { transform: translateX(2px); } }
+@keyframes coffee-ibeam-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+@keyframes coffee-prohibition { 0%, 75%, 100% { transform: rotate(0); } 82% { transform: rotate(-5deg); } 90% { transform: rotate(5deg); } }
+@keyframes coffee-directions { 0%, 100% { transform: scale(.96); } 50% { transform: scale(1.05); } }
+@keyframes coffee-zoom { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes coffee-copy { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+@keyframes coffee-sleep { 0%, 100% { transform: scale(1); } 50% { transform: translateY(1px) scale(1.015, .97); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee-cursor *, .coffee-cursor *::before, .coffee-cursor *::after { animation: none !important; transition: none !important; }
+}
+
+@media print { .coffee-cursor { display: none !important; } }

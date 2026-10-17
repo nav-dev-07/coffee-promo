@@ -137,6 +137,7 @@ export default function SiteScrollbar() {
     <div
       ref={trackRef}
       className="site-scrollbar"
+      data-cursor="pointer"
       role="scrollbar"
       aria-label="Page scroll"
       aria-controls="page-root"
@@ -147,7 +148,7 @@ export default function SiteScrollbar() {
       tabIndex={0}
       hidden
     >
-      <div ref={thumbRef} className="site-scrollbar-thumb" />
+      <div ref={thumbRef} className="site-scrollbar-thumb" data-cursor="grab" />
     </div>
   );
 }

@@ -34,9 +34,9 @@
 
 html[data-custom-scrollbar="true"], html[data-custom-scrollbar="true"] body { scrollbar-width: none; }
 html[data-custom-scrollbar="true"]::-webkit-scrollbar, html[data-custom-scrollbar="true"] body::-webkit-scrollbar { display: none; width: 0; height: 0; }
-.site-scrollbar { position: fixed; top: 8px; right: 3px; bottom: 8px; z-index: 1000; width: 14px; border-radius: 999px; background: #35261e0d; touch-action: none; user-select: none; -webkit-user-select: none; cursor: pointer; }
+.site-scrollbar { position: fixed; top: 8px; right: 3px; bottom: 8px; z-index: 1000; width: 18px; border-radius: 999px; background: #35261e0d; touch-action: none; user-select: none; -webkit-user-select: none; cursor: pointer; }
 .site-scrollbar[hidden] { display: none; }
-.site-scrollbar-thumb { position: absolute; top: 0; left: 3px; width: 8px; min-height: 48px; border-radius: 999px; background: var(--scrollbar-thumb); will-change: transform; cursor: grab; }
+.site-scrollbar-thumb { position: absolute; top: 0; left: 3px; width: 12px; min-height: 48px; border-radius: 999px; background: var(--scrollbar-thumb); will-change: transform; cursor: grab; }
 .site-scrollbar:hover .site-scrollbar-thumb, .site-scrollbar[data-dragging="true"] .site-scrollbar-thumb { background: var(--scrollbar-thumb-hover); }
 .site-scrollbar[data-dragging="true"], .site-scrollbar[data-dragging="true"] .site-scrollbar-thumb { cursor: grabbing; }
 .site-scrollbar:focus-visible { outline: 1px solid var(--accent); outline-offset: 1px; }

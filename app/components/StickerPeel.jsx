@@ -974,12 +974,18 @@ const StickerPeel = ({
       if (alive && !raf && visible && !document.hidden) raf = requestAnimationFrame(frame);
     }
 
+    const setHitCursor = value => {
+      if (hit.style.cursor !== value) hit.style.cursor = value;
+      if (value && hit.dataset.cursor !== value) hit.dataset.cursor = value;
+      else if (!value && hit.dataset.cursor) delete hit.dataset.cursor;
+    };
+
     const updateHover = event => {
       const point = toParent(event);
       state.local = toLocal(point);
       const over = solid(state.local);
       if (over !== state.hover) state.hover = over;
-      hit.style.cursor = over && settingsRef.current.draggable ? (state.press ? 'grabbing' : 'grab') : '';
+      setHitCursor(over && settingsRef.current.draggable ? (state.press ? 'grabbing' : 'grab') : '');
     };
 
     const onPointerMove = event => {
@@ -1011,7 +1017,7 @@ const StickerPeel = ({
     const onHitLeave = () => {
       if (state.press) return;
       state.hover = false;
-      hit.style.cursor = '';
+      setHitCursor('');
       wake();
     };
 
@@ -1036,7 +1042,7 @@ const StickerPeel = ({
       state.vy = 0;
       hit.setPointerCapture?.(event.pointerId);
       if (s.draggable) {
-        hit.style.cursor = 'grabbing';
+        setHitCursor('grabbing');
         stack += 1;
         root.style.zIndex = String(stack);
         if (s.dragBounds === 'document') parent.style.zIndex = String(100 + stack);

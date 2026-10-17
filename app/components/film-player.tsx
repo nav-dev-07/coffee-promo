@@ -10,6 +10,7 @@ export default function FilmPlayer() {
   const restoreOverflowRef = useRef("");
   const expandedRequestedRef = useRef(false);
   const [expanded, setExpanded] = useState(false);
+  const [mediaCursor, setMediaCursor] = useState<"pointer" | "progress" | "wait">("pointer");
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -114,6 +115,7 @@ export default function FilmPlayer() {
               <button
                 type="button"
                 className="film-size-toggle"
+                data-cursor={expanded ? "zoom-out" : "zoom-in"}
                 onClick={expanded ? minimizeFilm : expandFilm}
                 aria-label={expanded ? "Minimize film" : "Fullscreen film"}
                 title={expanded ? "Minimize film" : "Fullscreen film"}
@@ -126,7 +128,23 @@ export default function FilmPlayer() {
               <button type="button" className="film-close" onClick={closeFilm} aria-label="Close film">✕</button>
             </div>
           </div>
-          <video ref={videoRef} controls controlsList="nofullscreen" playsInline preload="none" poster="/coffee-latte.webp" aria-label="Ten-second coffee commercial, from a roasted bean to a freshly made latte">
+          <video
+            ref={videoRef}
+            controls
+            controlsList="nofullscreen"
+            playsInline
+            preload="none"
+            poster="/coffee-latte.webp"
+            data-cursor={mediaCursor}
+            aria-busy={mediaCursor !== "pointer"}
+            onLoadStart={() => setMediaCursor("progress")}
+            onWaiting={() => setMediaCursor("wait")}
+            onCanPlay={() => setMediaCursor("pointer")}
+            onPlaying={() => setMediaCursor("pointer")}
+            onPause={() => setMediaCursor("pointer")}
+            onError={() => setMediaCursor("pointer")}
+            aria-label="Ten-second coffee commercial, from a roasted bean to a freshly made latte"
+          >
             <source src="/coffee-commercial.mp4" type="video/mp4" />
             Your browser does not support embedded video. <a href="/coffee-commercial.mp4">Watch the coffee film.</a>
           </video>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import SiteScrollbar from "./components/site-scrollbar";
+import CoffeeCursor from "./components/coffee-cursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,7 +25,7 @@ const gtSuper = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "slow. — A little ritual. A better day.",
+  title: "slow. Enjoy the Coffee",
   description:
     "Good coffee. A little intention. Discover a slower kind of everyday, from the first beautiful bean to the last lovely sip.",
 };
@@ -36,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${gtSuper.variable}`}
     >
-      <body>{children}<SiteScrollbar /></body>
+      <body>{children}<SiteScrollbar /><CoffeeCursor /></body>
     </html>
   );
 }
