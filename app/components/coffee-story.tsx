@@ -156,8 +156,8 @@ export default function CoffeeStory() {
           ))}
         </div>
         <div className="coffee-stamp" aria-hidden="true">
-          <svg viewBox="0 0 120 120"><defs><path id="stamp-circle" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0" /></defs><text><textPath href="#stamp-circle" textLength="276">GOOD THINGS TAKE A LITTLE TIME · </textPath></text></svg>
-          <span>take<br /><em>it slow.</em></span>
+          <svg viewBox="0 0 120 120"><defs><path id="stamp-circle" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0" /></defs><text textLength="276"><textPath href="#stamp-circle">GOOD THINGS TAKE A LITTLE TIME · </textPath></text></svg>
+          <span><span>take</span><em>it slow.</em></span>
         </div>
         <div className="story-bottom">
           <FilmPlayer />

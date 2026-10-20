@@ -34,7 +34,7 @@
 
 html[data-custom-scrollbar="true"], html[data-custom-scrollbar="true"] body { scrollbar-width: none; }
 html[data-custom-scrollbar="true"]::-webkit-scrollbar, html[data-custom-scrollbar="true"] body::-webkit-scrollbar { display: none; width: 0; height: 0; }
-.site-scrollbar { position: fixed; top: 8px; right: 3px; bottom: 8px; z-index: 1000; width: 18px; border-radius: 999px; background: #35261e0d; touch-action: none; user-select: none; -webkit-user-select: none; cursor: pointer; }
+.site-scrollbar { position: fixed; top: 8px; right: 3px; bottom: 8px; z-index: 1000; width: 18px; border-radius: 999px; background: transparent; touch-action: none; user-select: none; -webkit-user-select: none; cursor: pointer; }
 .site-scrollbar[hidden] { display: none; }
 .site-scrollbar-thumb { position: absolute; top: 0; left: 3px; width: 12px; min-height: 48px; border-radius: 999px; background: var(--scrollbar-thumb); will-change: transform; cursor: grab; }
 .site-scrollbar:hover .site-scrollbar-thumb, .site-scrollbar[data-dragging="true"] .site-scrollbar-thumb { background: var(--scrollbar-thumb-hover); }
@@ -81,6 +81,7 @@ em { font-weight: inherit; }
   --story-copy-extras: 124px;
   --story-title-size: min(7.5vw, 134px);
   --story-title-scale: 0.874;
+  --stamp-size: 132px;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -127,12 +128,13 @@ em { font-weight: inherit; }
 .pill-button:hover { background: var(--accent); transform: translateY(-2px); }
 .button-arrow { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid #faf7f14a; border-radius: 50%; }
 .button-arrow svg { width: 15px; }
-.coffee-stamp { position: absolute; right: 5.6%; top: calc(var(--stamp-center-y, 50%) - 9%); width: 132px; height: 132px; color: var(--accent); transform: translateY(-50%) rotate(12deg); }
+.coffee-stamp { position: absolute; right: 5.6%; top: calc(var(--stamp-center-y, 50%) - 9%); width: var(--stamp-size); height: var(--stamp-size); color: var(--accent); transform: translateY(-50%) rotate(12deg); }
 .coffee-stamp svg { width: 100%; height: 100%; overflow: visible; }
 .coffee-stamp svg path { stroke: none; }
 .coffee-stamp text { font-family: var(--font-geist-sans), sans-serif; font-size: 8.6px; letter-spacing: 1.8px; fill: currentColor; }
-.coffee-stamp > span { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; font-family: var(--font-serif); font-size: 27px; font-weight: 700; line-height: 0.95; }
-.coffee-stamp em { font-size: 32px; }
+/* Scale the center lettering with the ring to preserve the desktop proportions. */
+.coffee-stamp > span { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; font-family: var(--font-serif); font-size: calc(var(--stamp-size) * 27 / 132); font-weight: 700; line-height: 0.95; white-space: nowrap; }
+.coffee-stamp em { font-size: calc(1em * 32 / 27); }
 .story-bottom { position: absolute; bottom: 36px; left: 5.5%; right: 5.5%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .watch-film { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 0; background: transparent; font-size: 10px; }
 .watch-film:hover { color: var(--accent); }
@@ -274,11 +276,11 @@ em { font-weight: inherit; }
 }
 
 @media (max-width: 1100px) {
+  /* Keep the video edge-to-edge on phones and tablets. */
+  .film-stage { transform: none; }
   .main-nav { gap: 23px; margin-left: 0; }
   .brand-descriptor { display: none; }
-  .coffee-stamp { width: 110px; height: 110px; }
-  .coffee-stamp > span { font-size: 24px; }
-  .coffee-stamp em { font-size: 27px; }
+  .coffee-stamp { display: none; }
   .coffee-grid { gap: 18px; }
   .coffee-card-art { height: 310px; }
   .coffee-bag { width: 56%; }
@@ -307,9 +309,6 @@ em { font-weight: inherit; }
   .chapter-label { font-size: 7px; margin-bottom: 14px; letter-spacing: 1.3px; }
   .pill-button { margin-top: 16px; min-height: 42px; padding: 6px 6px 6px 17px; font-size: 10px; gap: 20px; }
   .button-arrow { width: 28px; height: 28px; }
-  .coffee-stamp { width: 86px; height: 86px; right: 5.5%; }
-  .coffee-stamp > span { font-size: 20px; }
-  .coffee-stamp em { font-size: 25px; }
   .story-bottom { bottom: max(18px, env(safe-area-inset-bottom)); gap: 12px; }
   .watch-film { font-size: 9px; gap: 7px; }
   .film-duration { display: none; }
@@ -376,7 +375,6 @@ em { font-weight: inherit; }
 }
 
 @media (max-width: 390px) {
-  .coffee-stamp { width: 76px; height: 76px; }
   .watch-film { gap: 5px; font-size: 8px; }
   .story-progress-track { width: 28px; }
   .story-counter { gap: 6px; }
@@ -395,7 +393,7 @@ em { font-weight: inherit; }
   .chapter-label { margin-bottom: 12px; }
   .pill-button { margin-top: 16px; min-height: 44px; padding-top: 6px; padding-bottom: 6px; }
   .story-bottom { bottom: 20px; }
-  .coffee-stamp { width: 105px; height: 105px; }
+  .story-viewport { --stamp-size: 105px; }
 }
 
 @media (max-width: 760px) and (max-height: 740px) {
@@ -412,9 +410,8 @@ em { font-weight: inherit; }
   .chapter-label { display: none; }
   .pill-button { margin-top: 13px; min-height: 37px; padding-top: 4px; padding-bottom: 4px; font-size: 9px; }
   .button-arrow { width: 27px; height: 27px; }
-  .coffee-stamp { width: 82px; height: 82px; right: 5.5%; left: auto; bottom: auto; }
-  .coffee-stamp > span { font-size: 18px; }
-  .coffee-stamp em { font-size: 21px; }
+  .story-viewport { --stamp-size: 82px; }
+  .coffee-stamp { right: 5.5%; left: auto; bottom: auto; }
   .story-bottom { bottom: 10px; }
   .story-counter { margin-left: auto; }
 }
